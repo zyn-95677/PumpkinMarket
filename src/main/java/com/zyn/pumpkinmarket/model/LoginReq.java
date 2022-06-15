@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 
 @Data
 @ToString
@@ -15,10 +15,10 @@ import javax.validation.constraints.NotNull;
 @ApiModel(value = "User - 登录信息")
 public class LoginReq {
 
-    @NotNull(message = "账号不能为空")
+    @NotBlank(message = "账号不能为空")
     private String username;
 
-    @NotNull(message = "密码不能为空")
+    @NotBlank(message = "密码不能为空")
     private String password;
 
 }
