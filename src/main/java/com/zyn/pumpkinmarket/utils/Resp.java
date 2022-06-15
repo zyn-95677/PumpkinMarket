@@ -48,4 +48,10 @@ public class Resp extends HashMap<String, Object> {
         super.put(key, value);
         return this;
     }
+
+    public static Resp ok(Object data) {
+        Resp r = new Resp();
+        r.put("data", data);
+        return r;
+    }
 }
