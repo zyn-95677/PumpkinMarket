@@ -17,6 +17,7 @@ public class UserLoginReq {
     @ApiModelProperty(name = "username", required = true, example = "123")
     private String username;
 
+    @ApiModelProperty(name = "password", required = true, example = "123")
     private String password;
 
 }

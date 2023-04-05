@@ -10,14 +10,16 @@ import com.zyn.pumpkinmarket.model.param.UserParam;
 import com.zyn.pumpkinmarket.model.param.UserRegisterParam;
 import com.zyn.pumpkinmarket.utils.Resp;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
-@RestController
+@Controller
 @RequestMapping("/user")
 @Slf4j
+@CrossOrigin
 public class UserController {
 
     @Resource
@@ -30,31 +32,26 @@ public class UserController {
                 .username(userLoginReq.getUsername())
                 .password(userLoginReq.getPassword())
                 .build();
-        UserEntity userEntity = userBusinessService.login(param);
-        return Resp.ok(userEntity);
+        userBusinessService.login(param);
+        return Resp.SUCCESS;
     }
 
     @PostMapping("/update")
     @ResponseBody
-    public Resp update(String id, @Validated @RequestBody UserReq userReq) {
+    public UserEntity update(String id, @Validated @RequestBody UserReq userReq) {
         UserParam param = UserParam.builder()
                 .id(id)
                 .userReq(userReq)
                 .build();
-        UserEntity userEntity = userBusinessService.update(param);
-        return Resp.ok(userEntity);
+        return userBusinessService.update(param);
     }
 
     @PostMapping("/register")
     @ResponseBody
-    public Resp update(@Validated @RequestBody UserRegisterReq userRegisterReq) {
+    public void register(@Validated @RequestBody UserRegisterReq userRegisterReq) {
         UserRegisterParam param = UserRegisterParam.builder()
                 .userRegisterReq(userRegisterReq)
                 .build();
-        boolean result = userBusinessService.addUser(param);
-        if (!result) {
-            return Resp.error();
-        }
-        return Resp.ok();
+        userBusinessService.addUser(param);
     }
 }

@@ -14,7 +14,7 @@ public class UserRepositoryImpl implements UserRepository {
     private UserDbRepository userDbRepository;
 
     @Override
-    public UserEntity getUser(String username, String password) {
+    public UserEntity login(String username, String password) {
         return userDbRepository.getUser(username, password);
     }
 

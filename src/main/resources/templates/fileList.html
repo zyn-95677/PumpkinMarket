@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- jquery -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <!-- bootstrap -->
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" rel="stylesheet">
+    <script crossorigin="anonymous"
+            integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+            src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- jquery-validator -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery-validate/1.19.3/localization/messages_zh.min.js"></script>
+    <!-- layer -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/layer/3.5.1/layer.js"></script>
+    <!-- md5.js -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.19.0/js/md5.js"></script>
+</head>
+<body>
+<div>
+    <div class="row" style="width: 15%">
+        <div class="list-group">
+            <a aria-current="true" class="list-group-item list-group-item-action active" href="#">
+                The current link item
+            </a>
+            <a class="list-group-item list-group-item-action" href="#">A second link item</a>
+            <a class="list-group-item list-group-item-action" href="#">A third link item</a>
+            <a class="list-group-item list-group-item-action" href="#">A fourth link item</a>
+            <a class="list-group-item list-group-item-action disabled">A disabled link item</a>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    $(function () {
+        $(".list-group-item").each(function () {
+            $(this).log()
+            var a = $(this).find("a:first")[0];
+            if ($(a).attr("href") === location.pathname) {
+                $(this).addClass("active");
+            } else {
+                $(this).removeClass("active");
+            }
+        });
+    })
+</script>
+</html>

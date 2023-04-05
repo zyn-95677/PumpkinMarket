@@ -3,6 +3,7 @@ package com.zyn.pumpkinmarket.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
@@ -20,6 +21,7 @@ public class SwaggerConfiguration {
                 .apiInfo(apiInfo())
                 //查询所有接口
                 .select()
+                .paths(PathSelectors.ant("/user/**"))
                 .build();
     }
 
